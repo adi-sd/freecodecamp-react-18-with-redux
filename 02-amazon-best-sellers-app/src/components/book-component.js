@@ -4,21 +4,57 @@ const BookList = () => {
     return (
         <div>
             <h1>Amazon Best Sellers</h1>
+            <EventExamples />
             <section className="book-list">
-                <Book title={BOOKS[0].title} authorName={BOOKS[0].authorName} cover={BOOKS[0].cover} />
-                <Book title={BOOKS[1].title} authorName={BOOKS[1].authorName} cover={BOOKS[1].cover} />
-                <Book title={BOOKS[2].title} authorName={BOOKS[2].authorName} cover={BOOKS[2].cover} />
+                {BOOKS.map((book) => {
+                    return <Book {...book} key={book.id} />;
+                })}
             </section>
         </div>
     );
 };
 
+const EventExamples = () => {
+    const handleFormInput = (e) => {
+        console.log(e.target.name);
+        console.log(e.target.value);
+        console.log("Handle from input");
+    };
+    const handleButtonClick = () => {
+        alert("Handle Button Click");
+    };
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log("HandleForm Submit");
+    };
+    return (
+        <section>
+            <center>
+                <form onSubmit={handleFormSubmit}>
+                    <h1>Typical Form</h1>
+                    <input type="text" name="example" onChange={handleFormInput} style={{ margin: "1rem 0" }} />
+                    <button type="submit">Submit</button>
+                    <div>
+                        <button onClick={handleButtonClick}>Click Me!</button>
+                    </div>
+                </form>
+            </center>
+        </section>
+    );
+};
+
 const Book = (props) => {
+    const { cover, title, authorName, children } = props;
+    const handleBookClick = () => {
+        console.log(`Clicked On = ${title}`);
+    };
     return (
         <article className="book">
-            <img src={props.cover} alt={props.title + " Image"} />
-            <h2>{props.title}</h2>
-            <h4>{props.authorName.toLocaleUpperCase()}</h4>
+            <img src={cover} alt={title + " Image"} />
+            <h2>{title}</h2>
+            <h4>{authorName.toLocaleUpperCase()}</h4>
+            <button onClick={handleBookClick}>Click Me!</button>
+            {children}
         </article>
     );
 };
