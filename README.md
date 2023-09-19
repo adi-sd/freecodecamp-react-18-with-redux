@@ -18,6 +18,7 @@
         - onChange
     - Event Object and Form Submit
     - Form Submission in HTML
+    - in react we can only pass data from prent component to the children
 
 # React Fundamentals
 
