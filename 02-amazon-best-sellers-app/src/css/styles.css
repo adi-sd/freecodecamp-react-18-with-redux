@@ -18,6 +18,8 @@ h1 {
 }
 
 .book-list {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
     width: 90vw;
     max-width: 1170px;
     margin: 3rem auto;
@@ -25,9 +27,16 @@ h1 {
     gap: 2rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 1440px) {
     .book-list {
         grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr);
         align-items: start;
     }
 }
@@ -36,6 +45,7 @@ h1 {
     background: #fff;
     border-radius: 1rem;
     text-align: center;
+    position: relative;
     padding: 2rem;
 }
 
@@ -64,4 +74,17 @@ h1 {
     margin: 1rem 0 0 0;
     font-size: 20px;
     padding: 0.5rem;
+}
+
+.book span {
+    background-color: orangered;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    line-height: 3rem;
+    padding: 0.25rem;
+    color: whitesmoke;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
